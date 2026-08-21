@@ -1,0 +1,44 @@
+{
+  "parts": [
+    { "id": "body-tube",         "name": "Body Tube",              "material": "cardboard",    "cost_usd": 3.50, "lead_time_days": 2, "quantity_required": 1, "quantity_completed": 1 },
+    { "id": "nose-cone",         "name": "Nose Cone",              "material": "plastic",      "cost_usd": 2.00, "lead_time_days": 2, "quantity_required": 1, "quantity_completed": 0 },
+    { "id": "fin-set",           "name": "Fin Set (4x)",           "material": "balsa wood",   "cost_usd": 4.00, "lead_time_days": 3, "quantity_required": 4, "quantity_completed": 4 },
+    { "id": "engine-mount-tube", "name": "Engine Mount Tube",      "material": "cardboard",    "cost_usd": 1.50, "lead_time_days": 2, "quantity_required": 1, "quantity_completed": 0 },
+    { "id": "centering-rings",   "name": "Centering Rings",        "material": "plywood",      "cost_usd": 1.00, "lead_time_days": 2, "quantity_required": 2, "quantity_completed": 0 },
+    { "id": "engine-hook",       "name": "Engine Hook",            "material": "spring steel", "cost_usd": 0.75, "lead_time_days": 1, "quantity_required": 1, "quantity_completed": 0 },
+    { "id": "shock-cord",        "name": "Shock Cord",             "material": "elastic",      "cost_usd": 1.25, "lead_time_days": 1, "quantity_required": 1, "quantity_completed": 1 },
+    { "id": "shock-cord-mount",  "name": "Shock Cord Mount",       "material": "paper",        "cost_usd": 0.50, "lead_time_days": 1, "quantity_required": 1, "quantity_completed": 0 },
+    { "id": "parachute",         "name": "Parachute",              "material": "nylon",        "cost_usd": 5.00, "lead_time_days": 4, "quantity_required": 1, "quantity_completed": 0 },
+    { "id": "launch-lug",        "name": "Launch Lugs (2x)",       "material": "plastic tube", "cost_usd": 0.75, "lead_time_days": 1, "quantity_required": 2, "quantity_completed": 2 },
+    { "id": "body-tube-decals",  "name": "Decals",                 "material": "vinyl",        "cost_usd": 1.00, "lead_time_days": 3, "quantity_required": 1, "quantity_completed": 0 },
+    { "id": "paint",             "name": "Paint (primer + color)", "material": "acrylic",      "cost_usd": 6.00, "lead_time_days": 5, "quantity_required": 1, "quantity_completed": 0 },
+    { "id": "engine",            "name": "Rocket Engine (C6-5)",   "material": "propellant",   "cost_usd": 4.50, "lead_time_days": 7, "quantity_required": 1, "quantity_completed": 0 },
+    { "id": "igniter",           "name": "Igniter",                "material": "nichrome",     "cost_usd": 0.50, "lead_time_days": 1, "quantity_required": 1, "quantity_completed": 0 },
+    { "id": "recovery-wadding",  "name": "Recovery Wadding",       "material": "fire paper",   "cost_usd": 0.25, "lead_time_days": 1, "quantity_required": 3, "quantity_completed": 0 }
+  ],
+  "steps": [
+    { "id": "build-engine-mount",     "name": "Build engine mount",              "instructions": "Glue centering rings onto the engine mount tube; slide the engine hook under the aft ring.", "required_parts": [{ "part_id": "engine-mount-tube", "quantity": 1 }, { "part_id": "centering-rings", "quantity": 2 }, { "part_id": "engine-hook", "quantity": 1 }], "required_prior_steps": [], "duration_minutes": 20, "complete": true },
+    { "id": "install-engine-mount",   "name": "Install engine mount in body",    "instructions": "Apply glue inside the body tube and slide the engine mount assembly into place at the marked line.", "required_parts": [{ "part_id": "body-tube", "quantity": 1 }], "required_prior_steps": ["build-engine-mount"], "duration_minutes": 15, "complete": false },
+    { "id": "cut-fins",               "name": "Cut and sand fins",               "instructions": "Cut fins from the balsa sheet along the template lines and sand the edges smooth.", "required_parts": [], "required_prior_steps": [], "duration_minutes": 30, "complete": true },
+    { "id": "attach-fins",            "name": "Attach fins to body tube",        "instructions": "Glue each fin to the body tube along the guide lines, checking alignment against the engine mount.", "required_parts": [{ "part_id": "fin-set", "quantity": 4 }], "required_prior_steps": ["install-engine-mount", "cut-fins"], "duration_minutes": 25, "complete": false },
+    { "id": "fillet-fins",            "name": "Fillet and cure fin joints",      "instructions": "Apply glue fillets to each fin root and let cure fully before handling.", "required_parts": [], "required_prior_steps": ["attach-fins"], "duration_minutes": 45, "complete": false },
+    { "id": "attach-shock-cord-mount","name": "Attach shock cord mount",         "instructions": "Glue the shock cord mount strip inside the forward end of the body tube.", "required_parts": [{ "part_id": "shock-cord-mount", "quantity": 1 }], "required_prior_steps": [], "duration_minutes": 10, "complete": true },
+    { "id": "attach-shock-cord",      "name": "Attach shock cord",               "instructions": "Tie the shock cord to the shock cord mount with a secure knot.", "required_parts": [{ "part_id": "shock-cord", "quantity": 1 }], "required_prior_steps": ["attach-shock-cord-mount"], "duration_minutes": 10, "complete": false },
+    { "id": "prep-parachute",         "name": "Prep parachute",                  "instructions": "Attach shroud lines to the parachute canopy and tie them to the harness ring.", "required_parts": [{ "part_id": "parachute", "quantity": 1 }], "required_prior_steps": [], "duration_minutes": 20, "complete": true },
+    { "id": "attach-parachute",       "name": "Attach parachute to shock cord",  "instructions": "Tie the prepped parachute harness to the free end of the shock cord.", "required_parts": [], "required_prior_steps": ["attach-shock-cord", "prep-parachute"], "duration_minutes": 10, "complete": false },
+    { "id": "attach-launch-lugs",     "name": "Attach launch lugs",              "instructions": "Glue the two launch lugs to the body tube along the marked guide line.", "required_parts": [{ "part_id": "launch-lug", "quantity": 2 }], "required_prior_steps": [], "duration_minutes": 15, "complete": false },
+    { "id": "paint-rocket",           "name": "Paint rocket",                    "instructions": "Prime and paint the airframe; allow full cure time before handling.", "required_parts": [{ "part_id": "paint", "quantity": 1 }], "required_prior_steps": ["fillet-fins", "attach-launch-lugs"], "duration_minutes": 60, "complete": false },
+    { "id": "apply-decals",           "name": "Apply decals",                    "instructions": "Apply decals to the cured paint finish per the placement guide.", "required_parts": [{ "part_id": "body-tube-decals", "quantity": 1 }], "required_prior_steps": ["paint-rocket"], "duration_minutes": 15, "complete": false },
+    { "id": "final-assembly-body",    "name": "Final body assembly",             "instructions": "Feed the recovery system into the body tube and seat the nose cone.", "required_parts": [{ "part_id": "nose-cone", "quantity": 1 }], "required_prior_steps": ["apply-decals", "attach-parachute"], "duration_minutes": 20, "complete": false },
+    { "id": "prep-engine",            "name": "Prep engine",                     "instructions": "Insert the igniter into the engine nozzle per the manufacturer's instructions.", "required_parts": [{ "part_id": "engine", "quantity": 1 }, { "part_id": "igniter", "quantity": 1 }], "required_prior_steps": [], "duration_minutes": 5, "complete": true },
+    { "id": "load-engine",            "name": "Load engine",                     "instructions": "Pack recovery wadding into the body tube, then insert the prepped engine into the mount.", "required_parts": [{ "part_id": "recovery-wadding", "quantity": 3 }], "required_prior_steps": ["final-assembly-body", "prep-engine"], "duration_minutes": 10, "complete": false },
+    { "id": "final-inspection",       "name": "Final inspection",                "instructions": "Check fin alignment, recovery system, and engine seating before certifying for launch.", "required_parts": [], "required_prior_steps": ["load-engine"], "duration_minutes": 10, "complete": false }
+  ],
+  "assemblies": [
+    { "id": "engine-mount",       "name": "Engine Mount",        "step_ids": ["build-engine-mount", "install-engine-mount"] },
+    { "id": "fin-can",            "name": "Fin Can",             "step_ids": ["cut-fins", "attach-fins", "fillet-fins"] },
+    { "id": "recovery-system",    "name": "Recovery System",     "step_ids": ["attach-shock-cord-mount", "attach-shock-cord", "prep-parachute", "attach-parachute"] },
+    { "id": "airframe-finishing", "name": "Airframe Finishing",  "step_ids": ["attach-launch-lugs", "paint-rocket", "apply-decals"] },
+    { "id": "final-assembly",     "name": "Final Assembly",      "step_ids": ["final-assembly-body", "prep-engine", "load-engine", "final-inspection"] }
+  ]
+}
