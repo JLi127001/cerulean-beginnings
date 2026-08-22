@@ -28,3 +28,17 @@ pip install -e ".[dev]"
 ```bash
 pytest
 ```
+
+## Run the API
+
+```bash
+uvicorn api.main:app --reload
+```
+
+Endpoints currently implemented (backed by `core/graph.py` — cycle detection, topological
+sort, and reachability): `GET /steps`, `GET /steps/{id}`, `GET /steps/{id}/impact`,
+`POST /steps/{id}/complete`, `POST /parts/{id}/increment`, `GET /build-order`,
+`GET /validation`.
+
+Not yet implemented, pending `core/cpm.py` and `core/derived.py`: `GET /critical-path`,
+`GET /progress`, `GET /recommended-next`.
